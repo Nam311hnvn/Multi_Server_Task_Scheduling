@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="357" viewBox="0 0 1050 357">
+<rect width="100%" height="100%" fill="white"/>
+<text x="115" y="32" font-family="Arial" font-size="20" font-weight="bold" fill="#111">HEFT - Gantt chart</text>
+<text x="115" y="52" font-family="Arial" font-size="12" fill="#555">Predicted makespan: 80.000 time units</text>
+<line x1="115.00" y1="75" x2="115.00" y2="289" stroke="#e4e7ea" stroke-width="1"/>
+<text x="115.00" y="314" text-anchor="middle" font-size="12" font-family="Arial" fill="#777">0.0</text>
+<line x1="205.50" y1="75" x2="205.50" y2="289" stroke="#e4e7ea" stroke-width="1"/>
+<text x="205.50" y="314" text-anchor="middle" font-size="12" font-family="Arial" fill="#777">8.0</text>
+<line x1="296.00" y1="75" x2="296.00" y2="289" stroke="#e4e7ea" stroke-width="1"/>
+<text x="296.00" y="314" text-anchor="middle" font-size="12" font-family="Arial" fill="#777">16.0</text>
+<line x1="386.50" y1="75" x2="386.50" y2="289" stroke="#e4e7ea" stroke-width="1"/>
+<text x="386.50" y="314" text-anchor="middle" font-size="12" font-family="Arial" fill="#777">24.0</text>
+<line x1="477.00" y1="75" x2="477.00" y2="289" stroke="#e4e7ea" stroke-width="1"/>
+<text x="477.00" y="314" text-anchor="middle" font-size="12" font-family="Arial" fill="#777">32.0</text>
+<line x1="567.50" y1="75" x2="567.50" y2="289" stroke="#e4e7ea" stroke-width="1"/>
+<text x="567.50" y="314" text-anchor="middle" font-size="12" font-family="Arial" fill="#777">40.0</text>
+<line x1="658.00" y1="75" x2="658.00" y2="289" stroke="#e4e7ea" stroke-width="1"/>
+<text x="658.00" y="314" text-anchor="middle" font-size="12" font-family="Arial" fill="#777">48.0</text>
+<line x1="748.50" y1="75" x2="748.50" y2="289" stroke="#e4e7ea" stroke-width="1"/>
+<text x="748.50" y="314" text-anchor="middle" font-size="12" font-family="Arial" fill="#777">56.0</text>
+<line x1="839.00" y1="75" x2="839.00" y2="289" stroke="#e4e7ea" stroke-width="1"/>
+<text x="839.00" y="314" text-anchor="middle" font-size="12" font-family="Arial" fill="#777">64.0</text>
+<line x1="929.50" y1="75" x2="929.50" y2="289" stroke="#e4e7ea" stroke-width="1"/>
+<text x="929.50" y="314" text-anchor="middle" font-size="12" font-family="Arial" fill="#777">72.0</text>
+<line x1="1020.00" y1="75" x2="1020.00" y2="289" stroke="#e4e7ea" stroke-width="1"/>
+<text x="1020.00" y="314" text-anchor="middle" font-size="12" font-family="Arial" fill="#777">80.0</text>
+<text x="97" y="112" text-anchor="end" font-family="Arial" font-size="16" fill="#111">P1</text>
+<line x1="115" y1="133" x2="1020" y2="133" stroke="#ddd"/>
+<rect x="420.44" y="86" width="147.06" height="42" rx="5" fill="#196cb7"/>
+<text x="493.97" y="111" text-anchor="middle" font-size="13" font-family="Arial" fill="white" font-weight="bold">n2</text>
+<rect x="759.81" y="86" width="56.56" height="42" rx="5" fill="#196cb7"/>
+<text x="788.09" y="111" text-anchor="middle" font-size="13" font-family="Arial" fill="white" font-weight="bold">n8</text>
+<text x="97" y="176" text-anchor="end" font-family="Arial" font-size="16" fill="#111">P2</text>
+<line x1="115" y1="197" x2="1020" y2="197" stroke="#ddd"/>
+<rect x="318.62" y="150" width="90.50" height="42" rx="5" fill="#be7131"/>
+<text x="363.88" y="175" text-anchor="middle" font-size="13" font-family="Arial" fill="white" font-weight="bold">n4</text>
+<rect x="409.12" y="150" width="181.00" height="42" rx="5" fill="#be7131"/>
+<text x="499.62" y="175" text-anchor="middle" font-size="13" font-family="Arial" fill="white" font-weight="bold">n6</text>
+<rect x="748.50" y="150" width="135.75" height="42" rx="5" fill="#be7131"/>
+<text x="816.38" y="175" text-anchor="middle" font-size="13" font-family="Arial" fill="white" font-weight="bold">n9</text>
+<rect x="940.81" y="150" width="79.19" height="42" rx="5" fill="#be7131"/>
+<text x="980.41" y="175" text-anchor="middle" font-size="13" font-family="Arial" fill="white" font-weight="bold">n10</text>
+<text x="97" y="240" text-anchor="end" font-family="Arial" font-size="16" fill="#111">P3</text>
+<line x1="115" y1="261" x2="1020" y2="261" stroke="#ddd"/>
+<rect x="115.00" y="214" width="101.81" height="42" rx="5" fill="#3d9177"/>
+<text x="165.91" y="239" text-anchor="middle" font-size="13" font-family="Arial" fill="white" font-weight="bold">n1</text>
+<rect x="216.81" y="214" width="214.94" height="42" rx="5" fill="#3d9177"/>
+<text x="324.28" y="239" text-anchor="middle" font-size="13" font-family="Arial" fill="white" font-weight="bold">n3</text>
+<rect x="431.75" y="214" width="113.12" height="42" rx="5" fill="#3d9177"/>
+<text x="488.31" y="239" text-anchor="middle" font-size="13" font-family="Arial" fill="white" font-weight="bold">n5</text>
+<rect x="544.88" y="214" width="124.44" height="42" rx="5" fill="#3d9177"/>
+<text x="607.09" y="239" text-anchor="middle" font-size="13" font-family="Arial" fill="white" font-weight="bold">n7</text>
+<text x="567.50" y="344" text-anchor="middle" font-family="Arial" font-size="14" fill="#444">Time (abstract scheduling units)</text>
+</svg>

@@ -1,0 +1,33 @@
+{
+  "source": "Topcuoglu et al. (2002), Fig. 3, IEEE TPDS 13(3), p. 265. Edge weights are average interprocessor communication costs.",
+  "machines": ["P1", "P2", "P3"],
+  "tasks": [
+    {"id":"n1", "costs":[14,16,9]},
+    {"id":"n2", "costs":[13,19,18]},
+    {"id":"n3", "costs":[11,13,19]},
+    {"id":"n4", "costs":[13,8,17]},
+    {"id":"n5", "costs":[12,13,10]},
+    {"id":"n6", "costs":[13,16,9]},
+    {"id":"n7", "costs":[7,15,11]},
+    {"id":"n8", "costs":[5,11,14]},
+    {"id":"n9", "costs":[18,12,20]},
+    {"id":"n10", "costs":[21,7,16]}
+  ],
+  "edges": [
+    {"from":"n1", "to":"n2", "comm":18},
+    {"from":"n1", "to":"n3", "comm":12},
+    {"from":"n1", "to":"n4", "comm":9},
+    {"from":"n1", "to":"n5", "comm":11},
+    {"from":"n1", "to":"n6", "comm":14},
+    {"from":"n2", "to":"n8", "comm":19},
+    {"from":"n2", "to":"n9", "comm":16},
+    {"from":"n3", "to":"n7", "comm":23},
+    {"from":"n4", "to":"n8", "comm":27},
+    {"from":"n4", "to":"n9", "comm":23},
+    {"from":"n5", "to":"n9", "comm":13},
+    {"from":"n6", "to":"n8", "comm":15},
+    {"from":"n7", "to":"n10", "comm":17},
+    {"from":"n8", "to":"n10", "comm":11},
+    {"from":"n9", "to":"n10", "comm":13}
+  ]
+}
