@@ -125,7 +125,7 @@ def main():
     parser.add_argument('--output', type=Path, default=Path('outputs/live.json'))
     args = parser.parse_args()
     graph = TaskGraph.from_dict(json.loads(args.input.read_text(encoding='utf8')))
-    result = run_live(graph, args.algorithm, args.endpoints.split(','), token, args.time_unit_ms)
+    result = run_live(graph, args.algorithm, args.endpoints.split(','), args.time_unit_ms)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding='utf8')
     print(f"{args.algorithm.upper()} predicted makespan = {result['predicted']['makespan']:.3f} time units")
