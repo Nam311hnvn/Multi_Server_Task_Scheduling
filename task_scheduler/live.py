@@ -7,7 +7,6 @@ from __future__ import annotations
 import argparse
 from concurrent.futures import ThreadPoolExecutor
 import json
-import os
 from pathlib import Path
 import threading
 import time
@@ -17,20 +16,24 @@ from .algorithms import schedule
 from .metrics import evaluate
 
 
-def request_json(url: str, token: str, payload: dict | None = None, timeout: float = 30) -> dict:
+def request_json(url: str, payload: dict | None = None, timeout: float = 30) -> dict:
     body = None if payload is None else json.dumps(payload).encode('utf8')
-    req = Request(url, data=body, method='GET' if body is None else 'POST',
-                  headers={'Authorization': f'Bearer {token}', 'Content-Type': 'application/json'})
+    req = Request(
+        url,
+        data=body,
+        method='GET' if body is None else 'POST',
+        headers={'Content-Type': 'application/json'}
+    )
     with urlopen(req, timeout=timeout) as response:
         return json.loads(response.read().decode('utf8'))
 
 
 def run_live(graph: TaskGraph, algorithm: str, endpoints: list[str],
-             token: str, time_unit_ms: float = 20.0) -> dict:
+             time_unit_ms: float = 20.0) -> dict:
     if len(endpoints) != len(graph.machines):
         raise ValueError('Exactly one endpoint must be given for each machine, in graph order')
-    if not token or not 0 < time_unit_ms <= 1000:
-        raise ValueError('Token and time_unit_ms (0..1000] are required')
+    if not 0 < time_unit_ms <= 1000:
+        raise ValueError('time_unit_ms must be in (0, 1000]')
     plan = schedule(graph, algorithm)
     if len(set(endpoints)) != len(endpoints):
         raise ValueError('Worker endpoints must be unique; one endpoint per machine')
@@ -39,7 +42,7 @@ def run_live(graph: TaskGraph, algorithm: str, endpoints: list[str],
     for url in endpoints:
         if not url.startswith('http://'):
             raise ValueError('This lab supports http:// on trusted PRIVATE network only')
-        health = request_json(url.rstrip('/') + '/health', token, timeout=5)
+        health = request_json(url.rstrip('/') + '/health', timeout=5)
         if not health.get('ok') or not isinstance(health.get('node'), str) or not health['node'].strip():
             raise ValueError(f'Worker health check or node identity failed for {url}')
         worker_nodes.append(health['node'])
@@ -77,10 +80,10 @@ def run_live(graph: TaskGraph, algorithm: str, endpoints: list[str],
                 if remaining > 0:
                     time.sleep(remaining)
                 actual_start = time.perf_counter()
-                result = request_json(machine_map[machine].rstrip('/') + '/execute', token,
-                                      {'task': task, 'duration_ms':
-                                       (placement.finish - placement.start) * time_unit_ms},
-                                      timeout=max(30, (placement.finish-placement.start)*unit_s+20))
+                result = request_json(machine_map[machine].rstrip('/') + '/execute',
+                      {'task': task, 'duration_ms':
+                       (placement.finish - placement.start) * time_unit_ms},
+                      timeout=max(30, (placement.finish-placement.start)*unit_s+20))
                 if result.get('task') != task:
                     raise RuntimeError('Worker returned a different task id')
                 if result.get('node') != worker_mapping[machine]['node']:
@@ -121,7 +124,6 @@ def main():
     parser.add_argument('--time-unit-ms', type=float, default=20)
     parser.add_argument('--output', type=Path, default=Path('outputs/live.json'))
     args = parser.parse_args()
-    token = os.getenv('TASK_SCHED_TOKEN', '')
     graph = TaskGraph.from_dict(json.loads(args.input.read_text(encoding='utf8')))
     result = run_live(graph, args.algorithm, args.endpoints.split(','), token, args.time_unit_ms)
     args.output.parent.mkdir(parents=True, exist_ok=True)

@@ -6,7 +6,6 @@ Bind to VM private interface; firewall this port to scheduler VM only.
 from __future__ import annotations
 import argparse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-import hmac
 import json
 import math
 import os
@@ -28,24 +27,12 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(data)
 
-    def authorized(self):
-        token = os.getenv('TASK_SCHED_TOKEN', '')
-        header = self.headers.get('Authorization', '')
-        if not token or not hmac.compare_digest(header, f'Bearer {token}'):
-            self.reply(401, {'error': 'Not authorized'})
-            return False
-        return True
-
     def do_GET(self):
-        if not self.authorized():
-            return
         if self.path == '/health':
             return self.reply(200, {'ok': True, 'node': os.getenv('TASK_SCHED_NODE', 'VM')})
         self.reply(404, {'error': 'Not found'})
 
     def do_POST(self):
-        if not self.authorized():
-            return
         if self.path != '/execute':
             return self.reply(404, {'error': 'Not found'})
         try:
@@ -76,8 +63,6 @@ def main():
     p.add_argument('--host', default='127.0.0.1')
     p.add_argument('--port', type=int, default=8000)
     args = p.parse_args()
-    if not os.getenv('TASK_SCHED_TOKEN'):
-        p.error('Set TASK_SCHED_TOKEN environment variable before running')
     server = ThreadingHTTPServer((args.host, args.port), Handler)
     print(f'Worker listening at {args.host}:{args.port}', flush=True)
     try:
